@@ -61,6 +61,7 @@ class LineRCA(nn.Module):
         layers=2,
         dropout=0.15,
         icd_method="dm_bocd",
+        icd_hazard=1.0 / 50.0,
     ):
         super().__init__()
         self.node_embedding = nn.Parameter(torch.randn(num_nodes, hidden_dim) * 0.02)
@@ -79,7 +80,14 @@ class LineRCA(nn.Module):
         )
         self.mce = MeasurementConsistencyBranch(consistency_dim, hidden_dim, num_causes)
         self.icd_method = icd_method
-        self.icd = build_icd(icd_method, num_nodes, node_dim, hidden_dim, num_causes)
+        self.icd = build_icd(
+            icd_method,
+            num_nodes,
+            node_dim,
+            hidden_dim,
+            num_causes,
+            hazard=icd_hazard,
+        )
         self.fusion = AdaptiveEvidenceFusion()
 
     def forward(self, node_window, consistency_window, adjacency, ablation="full"):

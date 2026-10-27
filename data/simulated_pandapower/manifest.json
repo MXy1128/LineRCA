@@ -1,0 +1,16 @@
+{
+  "schema_version": "2.0.0",
+  "generator": "simulation/generate_pandapower_datasets.py",
+  "pandapower_version": "2.14.10",
+  "network": "case33bw",
+  "samples_requested": 6000,
+  "source_profiles": [
+    "data/train.csv",
+    "data/test.csv"
+  ],
+  "files": {
+    "technical": "technical_line_loss.csv",
+    "non_technical": "non_technical_line_loss.csv",
+    "mixed": "mixed_line_loss.csv"
+  }
+}

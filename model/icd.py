@@ -277,14 +277,28 @@ class DiffusionScoreMatchingBOCDBranch(_EvidenceEncoder):
         return self.encode(torch.relu(signed_evidence), torch.relu(-signed_evidence))
 
 
-def build_icd(method: str, num_nodes: int, node_dim: int, hidden_dim: int, num_causes: int):
-    """Construct an ICD branch without changing the surrounding architecture."""
+def build_icd(
+    method: str,
+    num_nodes: int,
+    node_dim: int,
+    hidden_dim: int,
+    num_causes: int,
+    hazard: float = 1.0 / 50.0,
+):
+    """Construct an ICD branch without changing the surrounding architecture.
+
+    ``hazard`` is exposed so that the expected BOCD run length can be examined
+    in a controlled sensitivity experiment.  The default remains 1/50 and is
+    therefore backward compatible with all existing training commands.
+    """
     if method == "mad":
         return RobustEvidenceBranch(num_nodes, node_dim, hidden_dim, num_causes)
     if method in {"bocd", "bayesian"}:
-        return BayesianOnlineEvidenceBranch(num_nodes, node_dim, hidden_dim, num_causes)
+        return BayesianOnlineEvidenceBranch(
+            num_nodes, node_dim, hidden_dim, num_causes, hazard=hazard
+        )
     if method == "dm_bocd":
         return DiffusionScoreMatchingBOCDBranch(
-            num_nodes, node_dim, hidden_dim, num_causes
+            num_nodes, node_dim, hidden_dim, num_causes, hazard=hazard
         )
     raise ValueError(f"Unsupported ICD method: {method}")

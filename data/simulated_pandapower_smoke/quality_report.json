@@ -1,0 +1,78 @@
+{
+  "pandapower_version": "2.14.10",
+  "network": "pandapower.networks.case33bw",
+  "seed": 20260806,
+  "datasets": {
+    "technical": {
+      "rows": 27,
+      "columns": 241,
+      "missing_cells": 0,
+      "max_abs_energy_balance_residual_kw": 1.5916157281026244e-12,
+      "loss_type_counts": {
+        "technical": 20,
+        "normal": 7
+      },
+      "root_cause_counts": {
+        "normal": 7,
+        "poor_power_factor": 5,
+        "low_source_voltage": 4,
+        "reverse_power_flow": 4,
+        "line_resistance_increase": 3,
+        "overload": 2,
+        "topology_reconfiguration": 2
+      },
+      "nonconverged_rows": 0
+    },
+    "non_technical": {
+      "rows": 27,
+      "columns": 241,
+      "missing_cells": 0,
+      "max_abs_energy_balance_residual_kw": 8.242295734817162e-13,
+      "loss_type_counts": {
+        "non_technical": 19,
+        "normal": 8
+      },
+      "root_cause_counts": {
+        "normal": 8,
+        "meter_bypass": 7,
+        "uniform_scaling": 6,
+        "mean_replacement": 4,
+        "meter_bias": 1,
+        "intermittent_dropout": 1
+      },
+      "nonconverged_rows": 0
+    },
+    "mixed": {
+      "rows": 27,
+      "columns": 241,
+      "missing_cells": 0,
+      "max_abs_energy_balance_residual_kw": 1.3073986337985843e-12,
+      "loss_type_counts": {
+        "technical": 10,
+        "non_technical": 7,
+        "mixed": 6,
+        "normal": 4
+      },
+      "root_cause_counts": {
+        "poor_power_factor": 5,
+        "normal": 4,
+        "low_source_voltage": 2,
+        "mean_replacement": 2,
+        "meter_bypass": 2,
+        "intermittent_dropout": 1,
+        "meter_bias": 1,
+        "overload+uniform_scaling": 1,
+        "uniform_scaling": 1,
+        "topology_reconfiguration": 1,
+        "line_resistance_increase+meter_bypass": 1,
+        "topology_reconfiguration+meter_bias": 1,
+        "reverse_power_flow": 1,
+        "poor_power_factor+mean_replacement": 1,
+        "overload": 1,
+        "line_resistance_increase+meter_bias": 1,
+        "poor_power_factor+meter_bypass": 1
+      },
+      "nonconverged_rows": 0
+    }
+  }
+}

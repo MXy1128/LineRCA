@@ -1,1 +1,44 @@
-/logs/
+# Python caches and environments
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+
+# IDE and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime artifacts
+logs/
+tmp/
+qa_render_word_v1/
+outputs/
+results/
+
+# Manuscript, thesis, and drawing artifacts
+thesis/
+*.docx
+*.pdf
+*.vsdx
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.svg
+tmp_paper.txt
+baseline_references.*
+improve_liner_ca_paper.py
+make_docx_contact_sheets.py
+export_scenario_preview.ps1
+rebuild_*.ps1
+
+# Vendored third-party baseline repositories
+baselines/
+
+# Local scratch files
+new_feature_test
+*.inspect.ndjson

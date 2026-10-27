@@ -70,6 +70,14 @@ def parse_args() -> argparse.Namespace:
         help="单模块消融；full 为完整模型",
     )
     parser.add_argument("--dynotears-steps", type=int, default=120)
+    parser.add_argument(
+        "--dynotears-quantile", type=float, default=0.85,
+        help="DyNOTEARS edge-strength quantile used to sparsify the learned graph",
+    )
+    parser.add_argument(
+        "--icd-run-length", type=float, default=50.0,
+        help="Expected Dm-BOCD run length; the constant hazard is its reciprocal",
+    )
     parser.add_argument("--entity-trees", type=int, default=400)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -237,7 +245,10 @@ def main() -> None:
         adjacency = bundle.physical_adjacency.float().to(device)
     else:
         dynamic_adjacency, _ = fit_dynotears(
-            bundle.causal_series, steps=args.dynotears_steps, seed=args.seed
+            bundle.causal_series,
+            steps=args.dynotears_steps,
+            quantile=args.dynotears_quantile,
+            seed=args.seed,
         )
         adjacency = ((bundle.physical_adjacency + dynamic_adjacency) > 0).float().to(device)
     model = LineRCA(
@@ -249,6 +260,7 @@ def main() -> None:
         args.heads,
         args.layers,
         icd_method=args.icd_method,
+        icd_hazard=1.0 / args.icd_run_length,
     ).to(device)
     parameter_count = sum(value.numel() for value in model.parameters() if value.requires_grad)
     logger.info(
@@ -328,6 +340,8 @@ def main() -> None:
         "BestEpoch": best_epoch,
         "Params": parameter_count,
         "DmOmega": float(model.icd.omega.detach()) if hasattr(model.icd, "omega") else np.nan,
+        "ICDRunLength": args.icd_run_length,
+        "DyNOTEARSQuantile": args.dynotears_quantile,
         "Seconds": time.perf_counter() - start_time,
         **metrics,
     }

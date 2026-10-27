@@ -1,0 +1,111 @@
+{
+  "pandapower_version": "2.14.10",
+  "network": "pandapower.networks.case33bw",
+  "seed": 20260806,
+  "datasets": {
+    "technical": {
+      "rows": 5384,
+      "columns": 241,
+      "missing_cells": 0,
+      "max_abs_energy_balance_residual_kw": 0.0,
+      "loss_type_counts": {
+        "technical": 3797,
+        "normal": 1587
+      },
+      "root_cause_counts": {
+        "normal": 1587,
+        "reverse_power_flow": 686,
+        "low_source_voltage": 671,
+        "overload": 659,
+        "topology_reconfiguration": 620,
+        "poor_power_factor": 606,
+        "line_resistance_increase": 555
+      },
+      "nonconverged_rows": 0
+    },
+    "non_technical": {
+      "rows": 5384,
+      "columns": 241,
+      "missing_cells": 0,
+      "max_abs_energy_balance_residual_kw": 0.0,
+      "loss_type_counts": {
+        "non_technical": 2977,
+        "normal": 2407
+      },
+      "root_cause_counts": {
+        "normal": 2407,
+        "mean_replacement": 650,
+        "meter_bypass": 639,
+        "uniform_scaling": 634,
+        "meter_bias": 622,
+        "intermittent_dropout": 300,
+        "peak_period_theft": 132
+      },
+      "nonconverged_rows": 0
+    },
+    "mixed": {
+      "rows": 5384,
+      "columns": 241,
+      "missing_cells": 0,
+      "max_abs_energy_balance_residual_kw": 0.0,
+      "loss_type_counts": {
+        "mixed": 2094,
+        "technical": 1691,
+        "non_technical": 900,
+        "normal": 699
+      },
+      "root_cause_counts": {
+        "normal": 699,
+        "poor_power_factor": 298,
+        "overload": 297,
+        "topology_reconfiguration": 295,
+        "low_source_voltage": 275,
+        "reverse_power_flow": 268,
+        "line_resistance_increase": 258,
+        "meter_bypass": 215,
+        "mean_replacement": 213,
+        "meter_bias": 195,
+        "uniform_scaling": 157,
+        "topology_reconfiguration+meter_bias": 100,
+        "overload+meter_bypass": 99,
+        "line_resistance_increase+meter_bias": 90,
+        "poor_power_factor+uniform_scaling": 88,
+        "line_resistance_increase+uniform_scaling": 86,
+        "overload+mean_replacement": 84,
+        "reverse_power_flow+mean_replacement": 81,
+        "topology_reconfiguration+meter_bypass": 79,
+        "poor_power_factor+meter_bypass": 77,
+        "low_source_voltage+meter_bias": 74,
+        "poor_power_factor+mean_replacement": 73,
+        "line_resistance_increase+meter_bypass": 70,
+        "reverse_power_flow+uniform_scaling": 70,
+        "line_resistance_increase+mean_replacement": 70,
+        "low_source_voltage+meter_bypass": 70,
+        "poor_power_factor+meter_bias": 70,
+        "topology_reconfiguration+mean_replacement": 68,
+        "low_source_voltage+uniform_scaling": 67,
+        "overload+uniform_scaling": 66,
+        "low_source_voltage+mean_replacement": 66,
+        "reverse_power_flow+meter_bias": 65,
+        "intermittent_dropout": 63,
+        "topology_reconfiguration+uniform_scaling": 59,
+        "reverse_power_flow+meter_bypass": 57,
+        "peak_period_theft": 57,
+        "overload+meter_bias": 56,
+        "topology_reconfiguration+intermittent_dropout": 43,
+        "reverse_power_flow+intermittent_dropout": 37,
+        "overload+intermittent_dropout": 36,
+        "low_source_voltage+intermittent_dropout": 34,
+        "poor_power_factor+peak_period_theft": 30,
+        "poor_power_factor+intermittent_dropout": 27,
+        "overload+peak_period_theft": 20,
+        "topology_reconfiguration+peak_period_theft": 20,
+        "line_resistance_increase+peak_period_theft": 19,
+        "line_resistance_increase+intermittent_dropout": 16,
+        "reverse_power_flow+peak_period_theft": 14,
+        "low_source_voltage+peak_period_theft": 13
+      },
+      "nonconverged_rows": 0
+    }
+  }
+}
